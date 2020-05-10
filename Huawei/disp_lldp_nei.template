@@ -1,0 +1,12 @@
+Value Filldown LOCAL_HOST (\S+)
+Value LOCAL_PORT (\S+)
+Value Required NEIGHBOR_PORT (\S+)
+Value NEIGHBOR_HOSTNAME (\S+)
+Value MGMT_IP (\S+)
+
+Start
+  ^[<]${LOCAL_HOST}[>].
+  ^${LOCAL_PORT} has
+  ^Port ID\s+:${NEIGHBOR_PORT}
+  ^System name\s+:${NEIGHBOR_HOSTNAME}
+  ^Management address\s+:${MGMT_IP} -> Record
