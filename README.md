@@ -3,7 +3,7 @@ Parsing output of SSH commands on Network devices and generate CSV report.
 
 This script is based on TextFSM module.
 
-Usage:
+**Usage:**
 
     parser_output.py
       -h, --help            show this help message and exit
@@ -17,13 +17,13 @@ Usage:
                   Report name
 
 
-Example 1.
+**Example 1**
 
 Parse **output-show-version.log** file using TextFSM template **cisco-show-version.template**.
     
     parser_output.py -f path/to/log/output-show-version.log -t /path/to/template/cisco-show-version.template
 
-Example 2.
+**Example 2**
 
 Parse all files in **cisco-logs** directory using TextFSM template **cisco-show-version.template**.
     
