@@ -1,4 +1,6 @@
 Value PATCH (\S+)
+Value PATCH_STATE (\S+)
 
 Start
-  ^Patch.*Version:${PATCH} -> Record
+  ^Patch.*Version\s*:\s*${PATCH} 
+  ^.*atch.*tate.*:\s*${PATCH_STATE} -> Record
