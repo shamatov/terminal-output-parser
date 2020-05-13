@@ -41,16 +41,12 @@ def parse_file_many_templates(output_filename, template_filenames, print_console
     logger.debug(f"File '{output_filename}' - opened")
     for template in template_filenames:
         logger.debug(f"File '{output_filename}' - template '{template}'")
-        row = parse_file(output_filename, template, False)
-        logger.debug(f"Result: {row}")
+        rows = parse_file(output_filename, template, False)
+        logger.debug(f"Result: {rows}")
         try:
-            temp_table = []
-            for line in result_rows:
-                for r in row:
-                    #logger.debug(f"Exteding line {line} + r {r}")
-                    temp_table.append(line + r)
-            result_rows = temp_table
-            # extend_results(result_line, row)
+            result_rows = extend_results(result_rows, rows)
+            if not rows:
+                logger.warning(f"File '{output_filename}' - template '{template}' - matches not found")
             logger.debug(f"Total file result: {result_rows}")
         except IndexError:
             logger.info(f"File '{output_filename}' - template '{template}' - matches not found")
@@ -58,15 +54,24 @@ def parse_file_many_templates(output_filename, template_filenames, print_console
         return tabulate(result_rows, headers=header)
     else:
         logger.debug(f"Summary result: {result_rows}")
-        logger.info(f"File '{output_filename}' - done")
+        logger.warning(f"File '{output_filename}' - done")
         return result_rows
 
 
 def extend_results(table1, table2):
-    result_table = table1
-    for row2 in table2:
-        result_table.append(row2)
-    logger.info(f"Matched results: {result_table}")
+    temp_table = []
+    if len(table1) == len(table2):
+        for line, row in zip(table1, table2):
+            logger.debug(f"Extending line {line} + row {row}")
+            temp_table.append(line + row)
+    elif table2:
+        for line in table1:
+            for row in table2:
+                logger.debug(f"Appending line {line} + row {row}")
+                temp_table.append(line + row)
+    else:
+        return table1
+    return temp_table
 
 
 def write_csv_row(filename, row):
