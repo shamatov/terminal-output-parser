@@ -1,0 +1,4 @@
+Value ESN (\S+)
+
+Start
+  ^\s*ESN.*:\s*${ESN} -> Record

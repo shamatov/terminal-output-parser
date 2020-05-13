@@ -1,0 +1,4 @@
+display_sysname.template
+display_version.template
+display_patch.template
+display_esn.template

@@ -1,0 +1,4 @@
+Value SYSNAME (\S+)
+
+Start
+  ^sysname ${SYSNAME} -> Record

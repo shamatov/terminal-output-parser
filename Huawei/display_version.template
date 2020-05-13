@@ -1,16 +1,7 @@
-Value VERSION (V\d+R\d+C.*)
-Value Required HARDWARE (\S+)
-Value BAR_CODE (\S+)
-Value ITEM (\S+)
-Value DESCRIPTION (.*)
-Value MANUFACTURED (\S+)
-Value VENDOR_NAME (.*)
+Value Required VERSION (V\d+R\d+C.*)
+Value Required HARDWARE (.*)
+Value UPTIME (.*)
 
 Start
-  ^VRP.*${VERSION}
-  ^BoardType=${BOARD_TYPE}
-  ^BarCode=${BAR_CODE}
-  ^Item=${ITEM}
-  ^Description=${DESCRIPTION}
-  ^Manufactured=${MANUFACTURED}
-  ^VendorName=${VENDOR_NAME} -> Record
+  ^VRP \S+ software.*${VERSION}\) 
+  ^${HARDWARE} uptime is ${UPTIME} -> Record
