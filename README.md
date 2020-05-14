@@ -31,6 +31,8 @@ File **inventory_templates.list** contains list of TextFSM templates in same dir
 
 # Many files - one template
 
+Parse all files(!) in directory **path/to/dir**:
+
     parser_output.py -d path/to/dir -t path/to/template/display_version.template
     
 # Many files - many templates
