@@ -77,7 +77,7 @@ def parse_file_many_templates(output_filename, template_filenames, print_console
         except IndexError:
             logger.info(f"File '{output_filename}' - template '{template}' - matches not found")
         logger.debug(f"Summary result: {result_rows}")
-        logger.warning(f"File '{output_filename}' - done")
+    logger.warning(f"File '{output_filename}' - done")
     return tabulate(result_rows, headers=header) if print_console else result_rows
 
 
