@@ -1,0 +1,5 @@
+Value PLATFORM (\S+)
+Value VERSION (V\d+R\d+C.*)
+
+Start
+  ^VRP \S+ software.*\(${PLATFORM} ${VERSION}\) -> Record

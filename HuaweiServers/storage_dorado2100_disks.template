@@ -1,0 +1,23 @@
+Value Filldown SYSTEM_NAME (\S+)
+Value Filldown SYSTEM_LOCATION (.*)
+Value Filldown PRODUCT_NAME (.*)
+Value Filldown PRODUCT_VERSION (\S+)
+Value Filldown PATCH_VERSION (\S+)
+Value Filldown PRODUCT_SN (\S+)
+Value ELABEL_BOARDTYPE (\S+)
+Value Required ELABEL_BAR_CODE (\S+)
+Value ELABEL_ITEM (\S+)
+Value ELABEL_DESCR (.*)
+Value ELABEL_DATE (.*)
+Value ELABEL_VENDOR (.*)
+
+Start
+  ^\s+Device Model:\s*${PRODUCT_NAME}
+  ^\s+Product\s+[vV]ersion:\s*${PRODUCT_VERSION} 
+  ^\s+System Name:\s*${SYSTEM_NAME} 
+  ^\s+Product Serial Number:\s*${PRODUCT_SN} 
+  ^\s+System Location:\s*${SYSTEM_LOCATION} 
+  ^\s+Disk Type:\s+${ELABEL_BOARDTYPE}
+  ^\s+Serial number:\s+${ELABEL_BAR_CODE}
+  ^\s+Model:\s+${ELABEL_ITEM}
+  ^\s+Manufacture Name:\s+${ELABEL_VENDOR} -> Record
