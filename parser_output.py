@@ -39,10 +39,11 @@ def parse_file(output_filename, template_filename, print_console=False):
     """    
     with open(template_filename) as t, open(output_filename, 'r') as output:
         re_table = textfsm.TextFSM(t)
+        header = re_table.header
         result_table = re_table.ParseText(output.read())
         if print_console:
             header = re_table.header
-            logger.warning('\n' + tabulate(result_table), headers=header)
+            logger.warning('\n' + tabulate(result_table, headers=header))
         return result_table
 
 
@@ -77,7 +78,7 @@ def parse_file_many_templates(output_filename, template_filenames, print_console
         except IndexError:
             logger.info(f"File '{output_filename}' - template '{template}' - matches not found")
         logger.debug(f"Summary result: {result_rows}")
-        logger.warning(f"File '{output_filename}' - done")
+    logger.warning(f"File '{output_filename}' - done")
     return tabulate(result_rows, headers=header) if print_console else result_rows
 
 
