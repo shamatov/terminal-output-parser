@@ -39,10 +39,11 @@ def parse_file(output_filename, template_filename, print_console=False):
     """    
     with open(template_filename) as t, open(output_filename, 'r') as output:
         re_table = textfsm.TextFSM(t)
+        header = re_table.header
         result_table = re_table.ParseText(output.read())
         if print_console:
             header = re_table.header
-            logger.warning('\n' + tabulate(result_table), headers=header)
+            logger.warning('\n' + tabulate(result_table, headers=header))
         return result_table
 
 
