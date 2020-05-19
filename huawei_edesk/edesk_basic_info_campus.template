@@ -1,0 +1,11 @@
+Value SYSNAME (\S+)
+Value HARDWARE (\S+\d\d\S+)
+Value Required VERSION (V\d+R\d+C.*)
+Value Fillup MGMT_IP (\d+\.\d+\.\d+\.\d+)
+
+Start
+  ^VRP \S+ software.*${VERSION}\)
+  ^Copyright
+  ^\S+ ${HARDWARE}.* uptime is -> Record
+  ^sysname ${SYSNAME}
+  ^\s*hwtacacs.* source-ip ${MGMT_IP} -> Record
