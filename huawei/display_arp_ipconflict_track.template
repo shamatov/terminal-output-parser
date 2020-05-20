@@ -1,0 +1,26 @@
+Value Filldown SYSNAME_LOCAL (.*)
+Value Required CONFLICT_TYPE (.*)
+Value IP (\d+\.\d+\.\d+\.\d+)
+Value TIME (.*)
+Value CONFLICT_COUNT (\d+)
+Value SUPRESS_COUNT (\d+)
+Value INTERFACE_1 (\S+)
+Value INTERFACE_2 (\S+)
+Value VLAN_1 (\S+)
+Value VLAN_2 (\S+)
+Value MAC_1 (\S+)
+Value MAC_2 (\S+)
+
+Start
+  ^[<#]${SYSNAME_LOCAL}[>#]di
+  ^\s+Conflict type\s+:\s+${CONFLICT_TYPE}
+  ^\s+IP address\s+:\s+${IP}
+  ^\s+System time\s+:\s+${TIME}
+  ^\s+Conflict count\s+:\s+${CONFLICT_COUNT}
+  ^\s+Suppress count\s+:\s+${SUPRESS_COUNT}
+  ^\s+Old interface\s+:\s+${INTERFACE_1}
+  ^\s+Receive interface\s+:\s+${INTERFACE_2}
+  ^\s+Old VLAN.*:\s+${VLAN_1}
+  ^\s+Receive VLAN.*:\s+${VLAN_2}
+  ^\s+Old MAC\s+:\s+${MAC_1}
+  ^\s+Receive MAC\s+:\s+${MAC_2} -> Record
