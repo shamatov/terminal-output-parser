@@ -1,0 +1,15 @@
+Value Required NEIGHBOR (\S+)
+Value Required AS_REMOTE (\d+)
+Value Required AS_LOCAL (\d+)
+Value ROUTER_ID_REMOTE (\d+\.\d+\.\d+\.\d+)
+Value ROUTER_ID_LOCAL (\d+\.\d+\.\d+\.\d+)
+Value STATE (\S+)
+Value HOSTNAME_LOCAL (\S+)
+Value HOSTNAME_REMOTE (\S+)
+
+Start
+  ^BGP neighbor is ${NEIGHBOR}, remote AS ${AS_REMOTE}, local AS ${AS_LOCAL}
+  ^.*remote router ID ${ROUTER_ID_REMOTE}, local router ID ${ROUTER_ID_LOCAL}
+  ^\s+BGP state = ${STATE}, 
+  ^\s+Hostname Capability: advertised \(name: ${HOSTNAME_LOCAL},.*received \(name: ${HOSTNAME_REMOTE}, -> Record
+
