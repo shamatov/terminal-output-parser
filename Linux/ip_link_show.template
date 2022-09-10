@@ -1,0 +1,8 @@
+Value Required INTERFACE (\S+)
+Value MTU (\d+)
+Value Required STATE (\S+)
+Value Required MAC_ADDRESS (\S\S\:\S\S\:\S\S\:\S\S\:\S\S\:\S\S)
+
+Start
+  ^\d+\:\s+${INTERFACE}\:.*mtu ${MTU}.*state ${STATE}
+  ^\s+link\/\S+ ${MAC_ADDRESS} -> Record
